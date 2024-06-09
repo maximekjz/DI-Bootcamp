@@ -1,0 +1,166 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- if we want to make our page responsive -->
+    <meta description=""/>
+    <meta keywords=""/>
+    <meta author=""/>
+    <meta robots="robots" content="noindex"/> <!--Pour dire au robot google par ex n'indexe pas ma page ou ne suit pas le link-->
+    <meta robots="robots" content="nofollow"/>
+    <meta robots="robots" content="noindex, nofollow"/>
+    <meta robots="googlebot" content="noindex, nofollow"/>
+    <title>My first HTML page</title> <!--After the META-->
+    <link rel="stylesheet" href=style.css>
+    <link rel="icon" href="favicon.ico"/> <!--c'est pour le petit logo en haut à gauche de l'onglet sur la barre où il y a tous les onglets-->
+    <style> 
+        .color{
+            color:red;    
+        }
+    </style> <!--si on utilise un CSS et qu'on veut un chgt on peut le choisir ici-->
+    <script>
+        function myFunction(){
+        document.getElementById("demo").innerHTML="HelloWorld!";
+        }
+    </script>
+    <script src='script2.js'></script>
+    <script src='script.js' defer asym></script>  <!--parfois si le js est trop lourd, mieux vaut le mettre dans le body que dans le header sinon ça va bloquer-->
+</head>
+<body>
+    <!--Block elements-->
+    <h1>This is text</h1>
+    <h2>This is text</h2>
+    <h3>This is text</h3>
+    <h4>This is text</h4>
+    <h5>This is text</h5>
+    <h6>This is text</h6>
+
+    <p>Paragraph</p>
+
+    <div>Text in div 
+        <span class="color"> a span is inside a div</span> 
+        continue my text
+    </div>
+
+    <br/>
+
+    <blockquote cite="http.example.com">
+        "This is a blockquote" <!--permet d'indenter-->
+    </blockquote>
+
+    <q cite="http.example.com">
+        this is a quote <!--permet de quoter-->
+    </q>
+
+    <pre>
+        {
+            "name": "John",
+            "age":30,
+            "city": "NY"
+        }
+    </pre>
+
+    <code>
+        {
+            "name": "John",
+            "age":30,
+            "city": "NY"
+        }
+    </code>
+
+    <a name="section1"></a> <!--pour plus tard c'est un tag de section qui peut servir pour un anchor tag-->
+
+    <ul>
+        <li>item1</li>
+        <li>item2</li>
+    </ul>
+
+    <ol>
+        <li>item1</li>
+        <li>item2</li>
+    </ol>
+
+    <mark>Marked text</mark><br/>
+    <ins>Ins Text</ins><br/>
+    <del>Del Text</del><br/>
+    <small>Small Text</small><br/>
+    <sub>Sub Text</sub><br/>
+    <i>Italic Text</i>
+    <b>bold T</b>
+    <strong>Strong text</strong>
+
+    <!-- Links -->
+
+    <a href="http.google.com">This is a link</a>
+    <a href="mailto:aaa@gmail.com">Send Email</a>
+    <a href="tel:+97205555555">Call me</a>
+    <a href="ptext">Go to ptext</a>
+    <a href="index.html#ptext">Go to ptext of another page</a> 
+    <a href="file.pdf">Download document</a> <!--Link it-->
+    <a href="file.docx" download>Download document</a> <!--download it-->
+    <a href="#section1">Go to section1</a>
+
+    <!-- Images -->
+
+    <img src="image.jpg" alt="img" width="100" height="100"/> <!-- alt is very important, for blind people for example, in Israel for ex it's in the law to add the description-->
+    <img src="image.jpg" alt="img" loading="lazy"></img>
+
+    </br>
+
+    <!-- Form -->
+
+    <form action="" method="GET">  <!-- action = where we send the data to / method = method of sending the data -->
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" placeholder="name" required><br/> <!--placeholder c'est pour le petit texte gris dans la box-->
+        <label for="lastname">Name:</label>
+        <input type="text" id="lastname" name="lastname" placeholder="lastname" required><br/>
+        <input type="password" name="password" required><br/>
+        <input type="email"><br/>
+        <input type="tel"><br/>
+        <input type="date"><br/>
+        <input type="time"><br/>
+        <input type="datetime-local"><br/>
+        <input type="range"><br/>
+        <input type="color"><br/>
+        <input type="number"><br/>
+        <input type="file"><br/>
+        <input type="checkbox"><br/>
+        <input type="radio"><br/>
+        <input type="week"><br/>
+        <input type="month"><br/>
+        <textarea type="message">text area</textarea><br/>
+        <select>
+            <option value="volvo">Volvo</option>
+            <option value="Saab">Saab</option>
+            <option value="BMW">BMW</option>
+        </select>
+        <input type="hidden" value="101"><br/>
+
+        <input type="submit" value="Submit !>"><br/>
+    </form>
+
+    <!-- Tables -->
+
+    <table border="1">
+        <caption>Table caption</caption>
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>                        
+                    <th>Age</th>
+                </tr>
+            </thead>
+        <tbody>
+            <tr>
+                <td>Jill</td>                    
+                <td>mill</td>
+                <td>50</td>
+            </tr>
+            <tr>
+                <td>Sarah</td>                    
+                <td colspan="2">Lopl</td> <!--Colspan va fusionner x cellules-->
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>

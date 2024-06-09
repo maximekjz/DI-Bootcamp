@@ -1,0 +1,110 @@
+.wrapper{
+    display: grid;
+    grid-gap:10px;
+    grid-template-areas:
+    "header header header header "
+    "presentation  presentation"
+    "Copywrite ecommerce"
+    "web-design Marketing"
+    "footer footer " ;
+}
+
+.header{
+    grid-area: header;
+    list-style-type: none;
+    height: 80px;
+    background-color: rgb(245, 240, 240);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+li{
+    margin:10px;
+}
+
+.left{
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    padding-left: 0px;
+
+}
+
+.right{
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+}
+
+.Presentation{
+    grid-area: presentation;
+    list-style-type: none;
+    border-top: 1px grey solid;
+    display: flex;
+    flex-direction: right;
+    justify-content: center;
+    height: 100%;
+}
+
+.pr{
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    width:500px;
+    margin-left:20px;
+}
+
+#titre{
+    margin-top:5px;
+    margin-bottom: 5px;
+}
+#down{
+    margin-top:5px;
+    margin-bottom: 5px;
+}
+#contact{
+    margin-top:5px;
+    margin-bottom: 5px;
+}
+.Do{
+    grid-area: do;
+    list-style-type: none;
+    display: grid;
+}
+
+h1{
+    margin-top:5px;
+    margin-bottom: 5px;
+}
+
+
+.Copywrite{
+    grid-area: Copywrite;
+}
+
+
+.ecommerce{
+    grid-area: ecommerce;
+}
+
+.web-design{
+    grid-area: web-design;
+}
+
+.Marketing{
+    grid-area: Marketing;
+}
+.Footer{
+    grid-area: footer;
+    list-style-type: none;
+    display: grid;
+    border-bottom: 0px;
+}
+
+.titre{
+    color:grey;
+    font-size: 16px;
+}

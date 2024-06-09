@@ -1,0 +1,99 @@
+.challenge{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+div{
+ width:200px;
+ height:200px;
+ transition:all 0.3s ease;
+ margin:50px;
+ color:white;
+}
+
+.bonus{
+    width:100%;
+    height:200px;
+    background: pink;
+    transition:all 0.3s ease;
+    margin:10px
+   }
+
+.fade{
+    background-color: grey;
+}
+
+.color{
+    background-color: red;
+}
+
+.shrink{
+    background-color: azure;
+}
+
+.rotate{
+    background-color: yellow;
+}
+
+.circle{
+    background-color: purple;
+}
+
+.shadow{
+    background-color: orange;
+    
+}
+
+.swing{
+    background-color: green;
+}
+
+.border{
+    background-color: black;
+}
+
+.fade:hover{
+    opacity: 0.2;
+}
+
+.color:hover{
+    background-color: blue;
+}
+
+.shrink:hover{
+    /* -webkit-transform: scale(0.8);
+    -ms-transform: scale(0.8); */
+    transform: scale(0.8);
+}
+
+.rotate:hover{
+    transform: rotateZ(-30deg);
+}
+
+.circle:hover{
+    border-radius: 50%;
+}
+
+.shadow:hover{
+    box-shadow:
+ 5px 5px green,
+ 5px 5px yellow,
+ 10px 10px #53a7ea;
+ transform: translateX(-20px);
+}
+
+.swing:hover{
+    background-color: grey;
+    color: green;
+}
+
+.border:hover{
+    background-color: grey;
+    color: black;
+}
+
+
+.bonus:hover{
+    background-color: grey;
+    color: pink;
+}

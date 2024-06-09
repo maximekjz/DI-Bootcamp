@@ -1,0 +1,148 @@
+.row{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-left:  200px;
+    margin-right: 200px;
+    margin-top: 40px;
+    padding: 5px;
+    border: 1px red solid;
+    justify-content: space-around;
+
+
+}
+
+.blacktop{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0px;
+    border:0px;
+    padding: 0px;
+    width: 200px;
+    border: 1px red solid;
+
+}
+
+.blueshirt{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0px;
+    border:0px;
+    padding: 0px;
+    width: 200px;
+    border: 1px red solid;
+}
+
+
+
+.whiteshirt{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0px;
+    border:0px;
+    padding: 0px;
+    width: 200px;
+    border: 1px red solid;
+}
+
+.blacktop1{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0px;
+    border:0px;
+    padding: 0px;
+    width: 200px;
+    border: 1px red solid;
+}
+
+img{
+    width:198px;
+    height:300px;
+    position: relative;
+    margin:10px;
+    margin-bottom: 0px;
+}
+
+#ibis{
+    border: 1px blue solid
+}
+
+.blue{
+    border: 1px blue solid;
+    width:198px;
+    margin-top: 5px;
+}
+
+#title{
+    margin-top: 0px;
+    margin-bottom: 0px;
+    font-size: 20px;
+    color:black
+
+}
+
+#price{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    color: lightgreen;
+    font-size: 25px;
+}
+
+span{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 10px;
+    text-decoration:line-through;
+    color: gray;
+}
+
+#add{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    color:gray ;
+    border: 1px gray solid;
+}
+
+#new{
+    position:absolute;
+    left:20px;
+    top:20px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    color:white;
+    background-color: rgb(27, 195, 27);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#red{
+    position:absolute;
+    right:20px;
+    top:20px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    color:white;
+    background-color: red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}

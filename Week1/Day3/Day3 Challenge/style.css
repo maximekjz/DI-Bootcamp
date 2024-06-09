@@ -1,0 +1,44 @@
+.block{
+    width:100%;
+    height: 700px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-bottom: 2px solid black;
+    border-top: 1px solid gray;
+    padding-top: 0px;
+    border-top: 2px;
+}
+
+.inner-box{
+    height: 150px;
+    width: 150px;
+    margin:30px;
+    border: 1px solid black;
+    background-color: yellow;
+}
+
+.block1{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.c2{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.c3{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-right: 0px;
+}

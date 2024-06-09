@@ -1,0 +1,66 @@
+body{
+    font-size: 16px;
+    background-color: lightyellow;
+    color: red;
+}
+
+header, footer{
+    background-color: lightblue;
+    padding: 1Opx;
+    margin: 10px;
+}
+
+main{
+    background-color: lightgreen;
+    padding: 10px;
+    margin: 10px;
+    border: 5px solid pink;
+}
+
+/* media query 
+min-width:600px
+max-width:800px
+
+there is :
+all
+screen
+print
+speech
+tv
+projection
+braille
+*/
+
+@media only screen and (min-width:1000px){
+    body{
+        background-color: lightblue;
+    }
+    header, footer{
+        background-color: lightgreen;
+    }
+}
+
+@media (min-width:800px) and (max-width:1000px){
+    body{
+        background-color: lightgreen;
+    }
+    header, footer{
+        background-color: lightblue;
+    }
+}
+
+@media print{
+    body{
+        background-color: white;
+        color: black;
+    }
+}
+
+@media (max-width:600px){
+    body{
+        background-color: lightcoral;
+    }
+    header, footer{
+        background-color: lightyellow;
+    }
+}

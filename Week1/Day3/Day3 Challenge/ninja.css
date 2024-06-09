@@ -1,0 +1,40 @@
+body{
+    background-color: lightgray;
+}
+.inner-box{
+    height:50px;
+    width:50px;
+    border:1px solid black;
+    margin:5px;
+}
+
+.b{
+    background-color: rgba(177, 45, 45, 0.78);
+}
+
+.o{
+    background-color: orange;
+}
+
+.y{
+    background-color: yellow;
+}
+
+.bblock{
+    display:flex;
+    border: 2px solid black;
+    width:1300px;
+}
+.block{
+    display: flex;
+
+}
+
+.ima{
+    background-color: aqua;
+    height:40px;
+    width:40px;
+    position: absolute;
+    right:100px;
+    top:40px;
+}

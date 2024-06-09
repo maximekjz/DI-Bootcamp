@@ -1,0 +1,80 @@
+.wrapper{
+    background-color: lightblue;
+    width: 100%;
+    display: grid;
+    grid-gap:20px;
+    grid-template-areas:
+    "header header header"
+    "presentation presentation presentation"
+    "do do do"
+    "footer footer footer" ;
+}
+
+.header{
+    grid-area: header;
+    list-style-type: none;
+    height: 100px;
+    background-color: green;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+li{
+    margin :10px}
+
+.left{
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    padding-right: 20px;
+}
+
+.right{
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+}
+
+.Presentation{
+    grid-area: presentation;
+    list-style-type: none;
+    background-color: aqua;
+    display: flex;
+    flex-direction: row;
+    margin-left:50px;
+    margin-right: 50px;
+}
+
+.pr{
+    display: flex;
+    flex-direction: column;
+}
+p{
+    margin:10px;
+}
+
+#titre{
+    margin:0px;
+}
+
+h4{
+    border-bottom:1px solid blue;
+}
+.Do{
+    list-style-type: none;
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+}
+
+.Copywrite{
+    display: flex;
+}
+
+.Footer{
+    grid-area: footer;
+    list-style-type: none;
+    display: grid;
+    border-bottom: 0px;
+}
