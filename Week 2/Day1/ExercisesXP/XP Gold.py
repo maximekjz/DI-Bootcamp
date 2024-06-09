@@ -1,8 +1,7 @@
 #Exercie1
 
-# for i in range (4):
-#     print("Hello World")
-#     print("I lov python")
+print("Hello World\n"*4 +"I love python\n"*4)
+
 
 
 # Exercice 2
