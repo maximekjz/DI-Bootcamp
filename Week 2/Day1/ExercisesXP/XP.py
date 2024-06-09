@@ -27,7 +27,19 @@ shoe_size=44
 info = f"Hi, my name is {name}, I'm {age} and my shoe size is {shoe_size}"
 print(info)
 
-# Exercise 6
+
+# Exercice 6
+
+a=input("Enter a number A: ")
+b=input("Enter a number B: ")
+
+if a>b:
+    print("Hello World")
+
+
+
+
+# Exercise 7
 
 number=input("Chose a number ")
 number = int(number)
