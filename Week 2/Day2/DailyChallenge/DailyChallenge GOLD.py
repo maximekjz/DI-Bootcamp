@@ -23,21 +23,35 @@ if mm==c_m:
 elif mm>c_m:
     age-=1
 
-candles=age*"i"
-cake_d=age*"_"
-cake_d2=age*"^"
-cake_d3=age*"~"
-cake_d4=int(age/2)*" "
-cake_d5=int(age/4)*"_"
+# candles=age*"i"
+# cake_d=age*"_"
+# cake_d2=age*"^"
+# cake_d3=age*"~"
+# cake_d4=int(age/2)*" "
+# cake_d5=int(age/4)*"_"
 
+# cake=f"""
+#         {cake_d5}{candles}_{cake_d5}
+#        |{cake_d4}:H:a:p:p:y:{cake_d4}|
+#      __|_____{cake_d}______|__
+#     |^^^^^^^^^{cake_d2}^^^^^^^^|
+#     |{cake_d4}:B:i:r:t:h:d:a:y:{cake_d4}|
+#     |         {cake_d4}{cake_d4}        |
+#     ~~~~~~~~~~{cake_d3}~~~~~~~~~
+#     """
+
+
+candle=int(str(age)[-1])*"i"
+caked=(10-(int(str(age)[-1])))
+caked1=int((caked)/2)*"_"
 cake=f"""
-        {cake_d5}{candles}_{cake_d5}
-       |{cake_d4}:H:a:p:p:y:{cake_d4}|
-     __|_____{cake_d}______|__
-    |^^^^^^^^^{cake_d2}^^^^^^^^|
-    |{cake_d4}:B:i:r:t:h:d:a:y:{cake_d4}|
-    |         {cake_d4}{cake_d4}        |
-    ~~~~~~~~~~{cake_d3}~~~~~~~~~
-    """
+       _{caked1}{candle}{caked1}_
+      |:H:a:p:p:y:|
+    __|___________|__
+   |^^^^^^^^^^^^^^^^^|
+   |:B:i:r:t:h:d:a:y:|
+   |                 |
+   ~~~~~~~~~~~~~~~~~~~
+   """
 
 print(cake)
