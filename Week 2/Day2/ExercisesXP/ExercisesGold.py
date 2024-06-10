@@ -23,10 +23,41 @@ print(list)
 
 names = ['Samus', 'Cortana', 'V', 'Link', 'Mario', 'Cortana', 'Samus']
 
-name_user=input("Write your name")
+name_user=input("Write your name ")
 
-if name_user
-
+for name in names:
+    if name_user == name:
+        print(name)
+    
 # Exercice 4
 
-#Faire liste ordonnée et renvoyer premier elmt
+a, b, c =input("Write 3 numbers separate by a space ").split()
+a=int(a)
+b=int(b)
+c=int(c)
+
+if a>b:
+    if a>c:
+        print(a)
+    elif c>b:
+        print(c)
+elif b>c:
+    print(b)
+
+else :
+    print(c)
+
+# Exercice 5 
+
+vowel=['a', 'e', 'i', 'o', 'u', 'y']
+
+alphabet="abcdefghijklmnopqrstuvwxyz"
+
+for letter in alphabet:
+    if letter in vowel:
+        print(f"{letter} is a vowel")
+    else:
+        print(f"{letter}")
+
+# Exercice 6 
+
