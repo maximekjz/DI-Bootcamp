@@ -33,6 +33,9 @@ print(info)
 a=input("Enter a number A: ")
 b=input("Enter a number B: ")
 
+a=int(a)
+b=int(b)
+
 if a>b:
     print("Hello World")
 
