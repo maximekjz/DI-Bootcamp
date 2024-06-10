@@ -3,11 +3,6 @@
 #numbers2 = [1, 2, 3, 4, 5]
 #numbers3 = [number * 2 for number in numbers2]
 
-# letters_lower=['a','b','c','d']
-# letters_upper=[letter.capitalize() for letter in letters_lower]
-
-# print(letters_upper)
-
 # Exercice 1
 
 import random
@@ -103,4 +98,75 @@ while True:
      
 # Exercice 7
 
-fav_fruit=input("What's your favourite fruit ? ")
+fav_fruit=input("What's your favourite fruits ? Separate the fruits with a single space ")
+list_fruits=fav_fruit.split()
+chosen_fruit=input("Input a name of any fruit ")
+
+fruit_found=False
+
+for fruit in list_fruits:
+    if chosen_fruit == fruit:
+        print("You chose one of your favorite fruits! Enjoy!")
+        fruit_found= True 
+        break
+if not fruit_found:
+    print("You chose a new fruit. I hope you enjoy")
+
+# Exercie 8
+
+topping_list=[]
+price=10
+while True:
+    toppings=input('Add your toppings, once ended write "quit"')
+    if toppings=="quit":
+        break
+    else:
+        topping_list.append(toppings)
+        print(f"I'll add {toppings} on your pizza")
+        price+=2.5
+print(f"You add {topping_list}, the total price is {price}")
+
+# Exercice 9
+
+ages=input("What is the age of each person who wants a ticket ? (separate it by a space) ")
+ages_value=ages.split()
+price=0
+
+for age in ages_value:
+    age=int(age)
+    if age < 3 :
+        price+=0
+    elif 3 < age < 13:
+        price+=10
+    elif 13<age<22:
+        ask_age=input("What is your age ? ")
+        ask_age=int(ask_age)
+        if 15<ask_age<22:
+            print("you can't see this movie")
+        else: 
+            price+=15
+    else:
+        price+=15
+print(f"total cost is {price}")
+
+# Exercice 10
+
+sandwich_orders = ["Tuna sandwich", "Pastrami sandwich", "Avocado sandwich", "Pastrami sandwich", "Egg sandwich", "Chicken sandwich", "Pastrami sandwich"]
+
+index=0
+
+while index<len(sandwich_orders):
+        if sandwich_orders[index]=="Pastrami sandwich":
+            del sandwich_orders[index]
+        else: 
+              index+=1
+              
+finished_sandwiches=[]
+
+for sandwich in sandwich_orders[:]:
+    finished_sandwiches.append(sandwich)
+    sandwich_orders.remove(sandwich)
+
+print(f"l{finished_sandwiches}")
+print(f"p{sandwich_orders}")
+
