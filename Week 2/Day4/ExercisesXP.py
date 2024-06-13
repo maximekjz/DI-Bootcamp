@@ -1,4 +1,4 @@
-
+# -*- coding: utf-8 -*-
 # Exercice 1
 
 def display_message():
@@ -58,3 +58,115 @@ show_magicians()
 make_great()
 show_magicians()
 
+# Exercice 7
+import random
+
+def select_season():
+    month = int(input("Select the month (by a number): "))
+    season = ""
+    if 6 <= month <= 9:
+        season = "summer"
+    elif 10 <= month <= 12:
+        season = "fall"
+    elif 1 <= month <= 2 or month == 12:
+        season = "winter"
+    elif 3 <= month <= 5:
+        season = "spring"
+    return season
+
+def get_random_temp(season):
+    if season == "winter":
+        random_temp = round(random.uniform(-10.0, 0.0), 1)
+    elif season == "spring":
+        random_temp = round(random.uniform(0.0, 20.0), 1)
+    elif season == "summer":
+        random_temp = round(random.uniform(15.0, 40.0), 1)
+    elif season == "fall":
+        random_temp = round(random.uniform(2.0, 18.0), 1)
+    return random_temp
+
+def main():
+    season = select_season()
+    main_temp = get_random_temp(season)
+    print("The temperature is right now " + str(main_temp) + " degree Celsius")
+    if main_temp < 0:
+        print("Brrr, that’s freezing! Wear some extra layers today")
+    elif 0 <= main_temp < 16:
+        print("Quite chilly! Don’t forget your coat")
+    elif 16 <= main_temp <= 23:
+        print("Perfect temperature today")
+    elif 23 < main_temp < 32:
+        print("It's hot today")
+    else:
+        print("You should stay at home")
+
+main()
+
+
+# Exercice 8
+
+data = [
+    {
+        "question": "What is Baby Yoda's real name?",
+        "answer": "Grogu"
+    },
+    {
+        "question": "Where did Obi-Wan take Luke after his birth?",
+        "answer": "Tatooine"
+    },
+    {
+        "question": "What year did the first Star Wars movie come out?",
+        "answer": "1977"
+    },
+    {
+        "question": "Who built C-3PO?",
+        "answer": "Anakin Skywalker"
+    },
+    {
+        "question": "Anakin Skywalker grew up to be who?",
+        "answer": "Darth Vader"
+    },
+    {
+        "question": "What species is Chewbacca?",
+        "answer": "Wookiee"
+    }
+]
+
+
+def star_wars_quizz():
+    wrong_answers = []
+    correct_count = 0
+    incorrect_count = 0
+
+    for question_data in data:
+        question = question_data["question"]
+        correct_answer = question_data["answer"]
+        answer = str(input(question + "\nYour answer: "))
+
+        if answer.lower() == correct_answer.lower():
+            print("Good answer")
+            correct_count += 1
+        else:
+            print("Wrong answer")
+            incorrect_count += 1
+            wrong_answers.append({
+                "question": question,
+                "your_answer": answer,
+                "correct_answer": correct_answer
+            })
+
+    print("\nResults:")
+    print("Correct answers: {}".format(correct_count))
+    print("Incorrect answers: {}".format(incorrect_count))
+
+    if wrong_answers:
+        print("\nCorrection:")
+        for wrong_answer in wrong_answers:
+            print("Question: {}".format(wrong_answer["question"]))
+            print("Your answer: {}".format(wrong_answer["your_answer"]))
+            print("Correct answer: {}".format(wrong_answer["correct_answer"]))
+
+    if incorrect_count > 3:
+        print("Play again")
+
+star_wars_quizz()
