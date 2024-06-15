@@ -117,3 +117,40 @@ brand.update(more_on_zara)
 print(brand["number_stores"])
 
 print(brand)
+
+# Exercice 4
+
+users = ["Mickey","Minnie","Donald","Ariel","Pluto"]
+disney_users_A={}
+disney_users_B={}
+disney_users_C={}
+disney_users_D={}
+index_D=0
+disney_users_E={}
+index_E=0
+
+for index, user in enumerate(users):
+    disney_users_A[user]=index
+print(disney_users_A)
+
+for index, user in enumerate(users):
+    disney_users_B[index]=user
+print(disney_users_B)
+
+for index in enumerate(users):
+    users.sort()
+    for index, user in enumerate(users):
+        disney_users_C[user]=index
+print(disney_users_C)
+
+for index, user in enumerate(users):
+    if "i" in user:
+        disney_users_D[user]=index_D
+        index_D+=1
+print(disney_users_D)
+
+for index, user in enumerate(users):
+    if user[0].lower()=='m' or user[0].lower()=='p':
+        disney_users_E[user]=index_E
+        index_E+=1
+print(disney_users_E)
