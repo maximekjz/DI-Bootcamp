@@ -123,3 +123,38 @@ print(martin.is_18('Michael'))
 martin.family_presentation()
 
 # Exercice 5 
+
+class TheIncredibles(Family):
+    def __init__(self, members:list, last_name:str, attributes):
+        super().__init__(members, last_name)
+        self.attributes = attributes
+        
+
+    def use_power(self, incredible_member):
+        member = next((member for member in self.attributes if member['name'] == incredible_member))
+        if member and member['age'] > 18:
+            try:
+                print(f'{member['power']}')
+            except:
+                print('Not over 18 yo')
+    
+    def incredible_presentation(self):
+        print(f'Here is our powerful family {self.last_name}: ')
+        self.family_presentation()
+        
+
+Incredible = TheIncredibles([
+         {'name':'Michael','age':35,'gender':'Male','is_child':False,'power': 'fly','incredible_name':'MikeFly'},
+         {'name':'Sarah','age':32,'gender':'Female','is_child':False,'power': 'read minds','incredible_name':'SuperWoman'}
+], "Incredible",[{'name':'Michael','power':'fly'}, {'name':'Sarah','power':'read minds'}])
+
+
+Incredible.incredible_presentation()
+Incredible.born([
+        {'name':'Baby Jack','age':0,'gender':'Male','is_child':True,'power': 'Unknown'}
+    ])
+Incredible.incredible_presentation()
+
+
+ 
+
