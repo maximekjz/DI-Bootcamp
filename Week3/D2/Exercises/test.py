@@ -1,28 +1,31 @@
-class Family:
-    def __init__(self, members:list, last_name:str):
-        self.members = members
-        self.last_name = last_name
+class Pagination:
+    def __init__(self, items:list=['None'], pageSize:int=10):
+        self.items = items
+        self.pageSize = pageSize
+        self.currentPage = 0
 
-    def born(self, children:list):
-        children_names = 'and '.join(child['name'] for child in children)
-        for child in children:
-            self.members.append(child)
-        if len(children) > 1:
-            print(f'Congrats to the family {self.last_name} for the births of {children_names}!')
-        elif len(children) == 1:
-            print(f'Congrats to the family {self.last_name} for the birth of {children_names}!')
-        print(f'Current family members: {self.members}')
+    def getVisibleItems(self):
+        start = self.currentPage * self.pageSize
+        end = start + self.pageSize
+        return self.items[start:end]
 
-    def is_18(self, member_name):
-        selected_member = next((member for member in self.members if member['name'] == member_name), None)
-        if selected_member and selected_member['age'] > 18:
-            return True
-        else:
-            return False
-    
-    def family_presentation(self):
-        print(f'Family name: {self.last_name}')
-        for member in self.members:
-            print(f"Name: {member['name']}, Age: {member['age']}, Gender: {member['gender']}, Child: {member['is_child']}")
+    def nextPage(self):
+        self.currentPage += 1
 
+    def prevPage(self):
+        if self.currentPage > 0:
+            self.currentPage -= 1
 
+    def goToPage(self, page):
+        if 0 <= page < len(self.items) / self.pageSize:
+            self.currentPage = page
+
+# Exemple d'utilisation
+alphabetList = list("abcdefghijklmnopqrstuvwxyz")
+p = Pagination(alphabetList, 8)
+
+print(p.getVisibleItems())  # Output: ['a', 'b', 'c', 'd']
+p.nextPage()
+print(p.getVisibleItems())  # Output: ['e', 'f', 'g', 'h']
+p.nextPage()
+print(p.getVisibleItems())  # Output: ['i', 'j', 'k', 'l']
