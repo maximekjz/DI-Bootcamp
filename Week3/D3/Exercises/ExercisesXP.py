@@ -21,7 +21,7 @@ class Currency:
                 raise TypeError(f"Cannot add between Currency type {self.currency} and {other.currency}")
             else:
                 return Currency(self.currency, self.amount + other.amount)
-        elif isinstance(other, (int, float)):
+        elif isinstance(other, (int | float)):
             return Currency(self.currency, self.amount + other)
         else:
             raise TypeError("Unsupported type for addition")
@@ -32,7 +32,7 @@ class Currency:
                 raise TypeError(f"Cannot add between Currency type {self.currency} and {other.currency}")
             else:
                 self.amount += other.amount
-        elif isinstance(other, (int, float)):
+        elif isinstance(other, (int | float)):
             self.amount += other
         else:
             raise TypeError("Unsupported type for addition")
