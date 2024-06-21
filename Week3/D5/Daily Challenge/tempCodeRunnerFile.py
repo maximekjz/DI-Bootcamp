@@ -1,0 +1,1 @@
+self.cards=[Card(suit, value) for suit in Deck.suit_list for value in Deck.value_list]
