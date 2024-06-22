@@ -43,3 +43,37 @@ def main():
 if __name__ == "__main__":
     main()
 
+# Exercice 2
+
+import json
+sampleJson = """{ 
+   "company":{ 
+      "employee":{ 
+         "name":"emma",
+         "payable":{ 
+            "salary":7000,
+            "bonus":800
+         }
+      }
+   }
+}"""
+
+# Change sampleJson into a dic python
+content_str=json.loads(sampleJson)
+
+salary=content_str['company']['employee']['payable']['salary']
+print("Salary:", salary)
+
+
+content_str['company']['employee']['birthday'] = "17.06.96"
+print(content_str['company']['employee'])
+
+
+new_json_file_location = "/Users/Sarah/Desktop/DI-Bootcamp\ Maxime/Week3/D4/Exercises/test.py"
+
+with open(new_json_file_location, "w") as file:
+    json.dump(content_str, file, indent=4) 
+   
+# I can't save the file 
+
+
