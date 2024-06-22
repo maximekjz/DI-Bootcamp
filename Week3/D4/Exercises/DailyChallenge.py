@@ -25,7 +25,7 @@ class Text :
             if value > my_max_val:
                 my_max_val=value
                 my_max_key=word
-        print(f'The most common word is {my_max_key}, it occures {my_max_val} times')
+        print(f'The most common word is "{my_max_key}", it occures {my_max_val} times')
 
 
     def find_word(self, find_the_word:str):
@@ -46,6 +46,11 @@ class Text :
                 single_list.append(word)
         print(single_list)
 
+    @classmethod
+    def return_text(cls, file_location:str):
+        with open(file_location) as file:
+            content = file.read()
+        return cls(content)
 
 
 text=Text('A good book would sometimes cost as much as a good house.')
@@ -55,5 +60,6 @@ text.common()
 text.find_word('lmlmùl')
 text.single_word()
 
-
-        
+file_text_instance = Text.return_text("Exercises/the_stranger.txt")
+file_text_instance.common()
+file_text_instance.single_word()
