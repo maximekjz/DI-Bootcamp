@@ -27,6 +27,9 @@ SELECT first_name, last_name FROM students where first_name ilike 'a%';
 SELECT first_name, last_name FROM students where first_name ilike '%a';
 SELECT first_name, last_name FROM students where position('a' in substring(first_name FROM 2))>0;
 SELECT first_name, last_name FROM students where id=1 or id=3;
-SELECT id, first_name, last_name, birth_date FROM students where birth_date>='1/01/2000';
+SELECT id, first_name, last_name, birth_date FROM students where birth_date>='01/01/2000';
+SELECT id, first_name, last_name, birth_date FROM students order by last_name limit 4 ;
+SELECT id, first_name, last_name, birth_date FROM students order by birth_date desc limit 1 ;
+
 
 
