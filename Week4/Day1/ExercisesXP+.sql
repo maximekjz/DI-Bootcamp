@@ -1,3 +1,5 @@
+
+-- create
 CREATE TABLE students (
   id serial primary key,
   first_name varchar(50),
@@ -5,13 +7,15 @@ CREATE TABLE students (
   birth_date DATE
 );
 
-INSERT INTO students (first_name, last_name, birth_date) VALUES ('Marc', 'Benichou', '1998-02-11');
-INSERT INTO students (first_name, last_name, birth_date) VALUES ('Yoan', 'Cohen', '2010-12-03');
-INSERT INTO students (first_name, last_name, birth_date) VALUES ('Lea', 'Benichou', '1987-07-27');
-INSERT INTO students (first_name, last_name, birth_date) VALUES ('Amelia', 'Dux', '1996-04-07');
-INSERT INTO students (first_name, last_name, birth_date) VALUES ('David', 'Grez', '2003-06-14');
-INSERT INTO students (first_name, last_name, birth_date) VALUES ('Omer', 'Simpson', '1980-10-03');
-INSERT INTO students (first_name, last_name, birth_date) VALUES ('Maxime', 'Kajzer', '1996-06-17');
+INSERT INTO students (first_name, last_name, birth_date)
+VALUES 
+('Marc', 'Benichou', '1998-02-11'),
+('Yoan', 'Cohen', '2010-12-03'),
+('Lea', 'Benichou', '1987-07-27'),
+('Amelia', 'Dux', '1996-04-07'),
+('David', 'Grez', '2003-06-14'),
+('Omer', 'Simpson', '1980-10-03'),
+('Maxime', 'Kajzer', '1996-06-17');
 
 
 SELECT * FROM students;
