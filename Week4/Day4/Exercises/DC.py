@@ -26,7 +26,7 @@ connection = psycopg2.connect(
 cursor = connection.cursor()
 
 try:
-    table_query = "create table countries_table (id serial primary key, name varchar(50), capital varchar(50), flag varchar(50), subregion varchar(50), population integer);"
+    table_query = "create table countries_table (id serial primary key, name varchar(50), capital varchar(50), flag, subregion varchar(50), population integer);"
 except psycopg2.Error as e:
     print(f"Error saving menu item: {e}")
 cursor.execute(table_query)
@@ -34,29 +34,29 @@ connection.commit()
 
 try:
     for country in random_countries:
-        name = country.get('name', '').get('common','')
-        capital = country.get('capital', '')
-        flag = country.get('flags', []).get('png','')
-        subregion = country.get('subregion', '')
-        population = country.get('population', '')
+    name = country.get('name', '').get('common','')
+    capital = country.get('capital', '')
+    flag = country.get('flags', []).get('png','')
+    subregion = country.get('subregion', '')
+    population = country.get('population', '')
 
 
-        countries_picked.append({
-            'name': name,
-            'capital': capital,
-            'flag': flag,
-            'subregion': subregion,
-            'population': population
-        })
+    countries_picked.append({
+        'name': name,
+        'capital': capital,
+        'flag': flag,
+        'subregion': subregion,
+        'population': population
+    })
         
     # print(countries_picked)
-        query = f'''
-            insert into countries_table ( name, capital, flag,  subregion, population)
-            VALUES
-            (%s, %s,%s, %s,%s)
-            '''
-        cursor.execute(query, (name, capital, flag, subregion, population))
-        connection.commit()
+    query = f'''
+        insert into countries_table ( name, capital, flag,  subregion, population)
+        VALUES
+        (%s, %s,%s, %s,%s)
+        '''
+    cursor.execute(query, (name, capital, flag, subregion, population))
+    connection.commit()
     print('item inserted successfully.')
 except psycopg2.Error as e:
     print(f"Error inserting countries: {e}")

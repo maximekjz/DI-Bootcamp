@@ -23,7 +23,6 @@ def show_user_menu():
             if user_choice == 'V':
                 item_name = input('Which item do you want to see?')
                 manager = MenuManager(item_name)
-                manager.connect()
                 print(manager.get_by_name())
             elif user_choice == 'A':
                 add_item_to_menu()
@@ -41,8 +40,8 @@ def show_user_menu():
 
 def add_item_to_menu():
     try:
-        item_name = input("Item's name :")
-        item_price = input("Item's price :")
+        item_name = input("Item's name: ")
+        item_price = input("Item's price: ")
         new_item=MenuItem(item_name, item_price)
         new_item.save()
         print("Item added successfully.")
@@ -51,44 +50,51 @@ def add_item_to_menu():
 
 def remove_item_from_menu():
     try:
-        item_delete=input('Name of the item you want to remove from the restaurant’s menu')
-        item_remove=MenuItem(item_delete)
+        item_delete = input("ID and name of the item you want to remove from the restaurant's menu (separated by space): ")
+        item_id, item_name = item_delete.split(maxsplit=1)  
+        item_remove = MenuItem(item_name, None, item_id)
         item_remove.delete()
+        print("Item deleted successfully.")
+    except Exception as e:
+        print(f"Error deleting item: {e}")
+
 
 def update_item_from_menu():
     try:
-        item_up_name = input("Item's name you want to replace")
-        item_up_name_new = input("New item's name you want")
-        item_up_price = input("Item's price you want to replace")
-        item_up_price_new = input("New item's price you want")
-        update_item=MenuItem(item_up_name_new, item_up_price_new)
-        update_item.update(item_up_name, item_up_price)
+        item_up_name = input("Item's name you want to replace: ")
+        item_up_name_new = input("New item's name you want: ")
+        item_up_price = int(input("Item's price you want to replace: "))
+        item_up_price_new = int(input("New item's price you want: "))
+        update_item=MenuItem(item_up_name, item_up_price)
+        update_item.update(item_up_name_new, item_up_price_new)
+    except Exception as e:
+        print(f"Error updating item: {e}")
 
 
 def show_restaurant_menu():
 
-DBNAME = 'menu_item'
-USER = 'postgres'
-PASSWORD = 'password'
-HOST = "localhost"
-PORT = "5432"
+    DBNAME = 'menu_item'
+    USER = 'postgres'
+    PASSWORD = 'password'
+    HOST = "localhost"
+    PORT = "5432"
 
-connection = psycopg2.connect(
-dbname=DBNAME, user=USER, password=PASSWORD, host=HOST, port=PORT)
+    connection = psycopg2.connect(
+    dbname=DBNAME, user=USER, password=PASSWORD, host=HOST, port=PORT)
 
 
-cursor = connection.cursor()
+    cursor = connection.cursor()
 
-try:    
+   
     query = f'''
-    select * from menu_items
-    '''
-cursor.execute(query)
-rows = (
-    cursor.fetchall()
-)
+        select * from menu_items
+        '''
+    cursor.execute(query)
+    rows = (
+        cursor.fetchall()
+    )
 
-print(rows)
+    print(rows)
 
 if __name__ == "__main__":
     show_user_menu()
