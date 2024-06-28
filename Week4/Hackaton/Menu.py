@@ -219,7 +219,7 @@ def user_volunteer():
         try:
             user_choice=input(''' Please select an option
             View my request (V)
-            Add a request (A)
+            Find a volunteering (A)
             Delete a request (D)
             Update a request (U)
             Show the Menu (S)
@@ -248,6 +248,7 @@ def user_volunteer():
             print(f"Error: {e}")
 
 def add_vol_to_list():
+
     try:
         first_name = input("First name: ")
         last_name = input("Last name: ")
@@ -460,6 +461,9 @@ def show_requests_vol():
         print(f"Error fetching request: {e}")
     except Exception as ex:
         print(f"An error occurred: {ex}")
+
+
+
 
 if __name__ == "__main__":
     show_user_menu()

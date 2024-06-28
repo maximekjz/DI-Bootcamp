@@ -1,9 +1,7 @@
 import psycopg2
 
-
 class Organizator:
-
-     def __init__(self, organization_name, responsible_name, date_of_activity, telephone, mail, location, num_people_needed, description, category, provide_transport, insurance, majority, item_id=None) :
+    def __init__(self, organization_name, responsible_name, date_of_activity, telephone, mail, location, num_people_needed, description, category, provide_transport, insurance, majority, item_id=None):
         self.item_id = item_id
         self.organization_name = organization_name
         self.responsible_name = responsible_name
@@ -17,8 +15,8 @@ class Organizator:
         self.provide_transport = provide_transport
         self.insurance = insurance
         self.majority = majority
-          # Connection with the DB
-
+          
+        # Connection with the DB
         DBNAME = 'Volunteering'
         USER = 'postgres'
         PASSWORD = 'password'
@@ -26,60 +24,101 @@ class Organizator:
         PORT = "5432"
 
         self.connection = psycopg2.connect(
-        dbname=DBNAME, user=USER, password=PASSWORD, host=HOST, port=PORT
+            dbname=DBNAME, user=USER, password=PASSWORD, host=HOST, port=PORT
         )
 
-        # 2. Create a cursor (tool to run queries)
+        # Create a cursor (tool to run queries)
         self.cursor = self.connection.cursor()
 
-     # for save(), update() and cancel() I 'play' with id name and price on purpose
-
-     def save_orga(self) :
+    def save_orga(self):
         try:
-            query = f'''
+            query_orga = '''
             INSERT INTO organization (
-            organization_name, responsible_name, date_of_activity, telephone, mail,
-            location, num_people_needed, description, category, provide_transport, insurance, majority
+                organization_name, responsible_name, date_of_activity, telephone, mail,
+                location, num_people_needed, description, category, provide_transport, insurance, majority
             ) VALUES (
-            %s, %s, %s, %s, %s,
-            %s, %s, %s, %s, %s, %s, %s
+                %s, %s, %s, %s, %s,
+                %s, %s, %s, %s, %s, %s, %s
+            ) returning id
+            '''
+            self.cursor.execute(query_orga, (self.organization_name, self.responsible_name, self.date_of_activity, self.telephone, self.mail, self.location, self.num_people_needed, self.description, self.category, self.provide_transport, self.insurance, self.majority)) 
+
+            self.item_id = self.cursor.fetchone()[0]
+
+            query_match = '''
+            INSERT INTO match (
+                organization_name, date_of_activity, location, num_people_needed, description,
+                category, provide_transport, insurance, majority, organization_id
+            ) VALUES (
+                %s, %s, %s, %s, %s, %s, %s, %s, %s, %s
             )
             '''
-            self.cursor.execute(query, (self.organization_name, self.responsible_name, self.date_of_activity, self.telephone, self.mail, self.location, self.num_people_needed, self.description, self.category, self.provide_transport, self.insurance, self.majority)) 
+            match_values = (
+                self.organization_name, self.date_of_activity, self.location, self.num_people_needed,
+                self.description, self.category, self.provide_transport, self.insurance, self.majority,
+                self.item_id
+            )
+            self.cursor.execute(query_match, match_values)
+
             self.connection.commit()
             print('Your request has been saved successfully.')
         except psycopg2.Error as e:
-            print(f"Error saving request : {e}.")
+            print(f"Error saving request: {e}")
 
-
-     def delete_orga(self) :
+    def delete_orga(self) :
         try:
-            query = f'''
+            query_orga = '''
             DELETE FROM organization WHERE
             organization_name = %s AND
             responsible_name = %s AND
             date_of_activity = %s AND
             telephone = %s
             '''
-            self.cursor.execute(query, (self.organization_name, self.responsible_name, self.date_of_activity, self.telephone))
+            self.cursor.execute(query_orga, (self.organization_name, self.responsible_name, self.date_of_activity, self.telephone))
+
+            query_match = '''
+            DELETE FROM match WHERE
+            organization_name = %s AND
+            date_of_activity = %s AND
+            location = %s AND
+            num_people_needed = %s AND
+            description = %s AND
+            category = %s AND
+            provide_transport = %s AND
+            insurance = %s AND
+            majority = %s
+            '''
+            match_values = (
+                self.organization_name, self.date_of_activity, self.location, self.num_people_needed,
+                self.description, self.category, self.provide_transport, self.insurance, self.majority
+            )
+            self.cursor.execute(query_match, match_values)
+
             self.connection.commit()
             print('You have deleted your request successfully.')
         except psycopg2.Error as e:
             print(f"Error deleting request: {e}.")
 
-     def update_orga(self, update_fields, new_values) :
+    def update_orga(self, update_fields, new_values) :
         try:
             if not update_fields or len(update_fields) != len(new_values):
                 raise ValueError("No fields provided for update.")
             set_clause = ", ".join(f"{field} = %s" for field in update_fields)
-            query = f'''
+            query_orga = f'''
             UPDATE organization SET {set_clause} WHERE organization_name = %s
             AND date_of_activity = %s
             AND description = %s
             '''
             values = new_values + [self.organization_name,self.date_of_activity, self.description]
 
-            self.cursor.execute(query, values)
+            self.cursor.execute(query_orga, values)
+
+            query_match = f'''
+            UPDATE match SET {set_clause} WHERE organization_name = %s
+            '''
+            match_values = new_values + [self.organization_name, self.date_of_activity, self.description]
+            self.cursor.execute(query_match, match_values)
+
             self.connection.commit()
             print('Request updated successfully.')
         except ValueError as ve:
