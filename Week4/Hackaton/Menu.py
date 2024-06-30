@@ -36,8 +36,16 @@ def user_orga():
                     ''').upper()
             
             if user_choice == 'V':
-                request_name = input('Which request do you want to see ?')
-                request = Organizator(request_name)
+                request_name = input('Which request do you want to see ? Please enter your organization name ')
+                resp_name= input('Please enter your name ')
+                date=input('Please enter the date of your activity(format YYYY-MM-DD) ')
+                tel=input('Please enter your phone number ')
+                request = MenuOrga(request_name, resp_name, date, tel)
+                organization = request.get_by_name()
+                if organization is None:
+                    print("Organization not found.")
+                else:
+                    print(f"Organization found: {organization.__dict__}")
                 print(request.get_by_name())
             elif user_choice == 'A':
                 add_request_to_list()
@@ -222,23 +230,30 @@ def user_volunteer():
             Find a volunteering (A)
             Delete a request (D)
             Update a request (U)
-            Show the Menu (S)
+            Show my registration (S)
             Exit (E)
                     ''').upper()
             
             if user_choice == 'V':
-                request_name = input('Which request do you want to see ?')
-                request = MenuOrga(request_name)
-                print(request.get_by_name())
+                request_name = input('Which request do you want to see ? Please enter your first name ')
+                last_name= input('Please enter your last name ')
+                date=input('Please enter the date of your activity(format YYYY-MM-DD) ')
+                tel=input('Please enter your phone number ')
+                request = MenuOrgavol(request_name, last_name, date, tel)
+                organization = request.get_by_name_vol()
+                if organization is None:
+                    print("Organization not found.")
+                else:
+                    print(f"Organization found: {organization.__dict__}")
             elif user_choice == 'A':
-                add_vol_to_list()
+                show_requests()
             elif user_choice == 'D':
                 remove_vol_from_list()
             elif user_choice == 'U':
                 update_vol_from_list()
             elif user_choice == 'S':
                 show_requests_vol()  
-                break
+                break 
             elif user_choice == 'E':
                 print('Thank you')
                 break
@@ -462,6 +477,134 @@ def show_requests_vol():
     except Exception as ex:
         print(f"An error occurred: {ex}")
 
+def show_requests():
+    try:
+        DBNAME = "Volunteering"
+        USER = "postgres"
+        PASSWORD ="password"
+        HOST = "localhost"
+        PORT = "5432"
+        connection = psycopg2.connect(dbname=DBNAME, user=USER, password=PASSWORD, host=HOST, port=PORT)
+        cursor=connection.cursor()
+        query = f'''
+            SELECT *
+            FROM match
+            '''
+        cursor.execute(query)
+        rows=cursor.fetchall()
+        col_names = [desc[0] for desc in cursor.description]
+        col_widths = []
+        for i in range(len(col_names)):
+            max_col_width = max(len(col_names[i]), max(len(str(row[i])) for row in rows))
+            col_widths.append(max_col_width)
+        
+
+        col_titles = " | ".join([f"{col_names[i]:<{col_widths[i]}}" for i in range(len(col_names))])
+        print(col_titles)
+        print("-" * len(col_titles))
+        
+
+        for row in rows:
+            formatted_row = " | ".join([f"{str(row[i]):<{col_widths[i]}}" for i in range(len(row))])
+            print(formatted_row)
+    except psycopg2.Error as e:
+        print(f"Error fetching request: {e}")
+
+    while True:
+        choice_volunteer = input('Do you want to register? (Yes or No) ')
+        if choice_volunteer in ['Yes', 'No']:
+            break
+        else:
+            print("Invalid. Please enter Yes or No: ")
+    if choice_volunteer == 'Yes':
+        id_select=input("To which ID number do you want to register? ")
+        add_vol_to_list()
+        match=Match(id_select)
+        match.match_making()
+    else:
+        user_volunteer()
+
+class Match:
+
+    def __init__(self, id_select:int):
+        self.id_select = id_select
+
+    def match_making(self):
+        try:
+            DBNAME = "Volunteering"
+            USER = "postgres"
+            PASSWORD ="password"
+            HOST = "localhost"
+            PORT = "5432"
+            connection = psycopg2.connect(dbname=DBNAME, user=USER, password=PASSWORD, host=HOST, port=PORT)
+            cursor=connection.cursor()
+            query=f'''
+                SELECT
+                    v.date_of_availability,
+                    v.location,
+                    v.task,
+                    v.provide_transport,
+                    v.insurance,
+                    v.num_people_in_group,
+                    m.id,
+                    m.organization_name,
+                    m.date_of_activity,
+                    m.location,
+                    m.category,
+                    m.provide_transport,
+                    m.insurance,
+                    m.remaining_places,
+                    m.people_registered,
+                    m.num_people_needed
+
+                FROM volunteer AS v
+                INNER JOIN match AS m
+                ON v.date_of_availability = m.date_of_activity
+                AND (v.location = 'All' OR v.location::text = m.location::text)
+                AND (v.insurance::text = m.insurance::text OR m.insurance = 'Yes' OR v.insurance = 'Yes')
+                AND (v.provide_transport = 'No' OR m.provide_transport = 'Yes')
+                --AND m.remaining_places >= v.num_people_in_group
+                AND (v.task = 'All' OR m.category = 'For all')
+                AND m.id = %s
+                '''
+            cursor.execute(query, (self.id_select,))
+            result=cursor.fetchall()
+
+            if result:
+                for row in result:
+                    match_id = int(row[6])
+                    num_people_in_group = int(row[5]) if row[5] is not None else 0
+                    num_people_needed = int(row[15]) if row[15] is not None else 0
+                    people_registered = int(row[14]) if row[14] is not None else 0
+                    update_query = '''
+                    UPDATE match
+                    SET people_registered =  %s,
+                        remaining_places =  %s
+                    WHERE id = %s;
+                    '''
+                    new_people_registered = people_registered + num_people_in_group
+                    new_remaining_places = num_people_needed - num_people_in_group
+                    cursor.execute(update_query, (new_people_registered, new_remaining_places, match_id))
+            
+                    connection.commit()
+    
+                print(f"You are registered successfully to {row[7]} on {row[8]} for {num_people_in_group} people.")
+
+            else:
+                print(f"No matching records found.")
+                # if row[2] != 'All' and row[2] != row[11] :
+                #     print(f"No matching records found cause there is only physical volunteering.")
+                # elif row[0] != row[8] :
+                #     print(f"No matching records found cause there is no volunteering at this date.")
+                # elif (row[4] != 'Yes' and row[3] != 'Yes' and row[4] != row[13]) :
+                #     print(f"No matching records found cause your are not insured.")
+                # elif (row[5] != 'No' and row[12] != 'Yes') : 
+                #     print(f"No matching records found cause there is no transportation plan.")
+                # elif row[14] >= row[5] :
+                #     print(f"No matching records found cause there is no enough remaining place.")
+        except psycopg2.Error as e:
+            print(f"Error updating match status: {e}")
+            
 
 
 

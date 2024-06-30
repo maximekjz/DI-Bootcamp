@@ -48,9 +48,9 @@ class Organizator:
             query_match = '''
             INSERT INTO match (
                 organization_name, date_of_activity, location, num_people_needed, description,
-                category, provide_transport, insurance, majority, organization_id
+                category, provide_transport, insurance, majority, organization_id, people_registered, remaining_places
             ) VALUES (
-                %s, %s, %s, %s, %s, %s, %s, %s, %s, %s
+                %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, 0, 0
             )
             '''
             match_values = (
