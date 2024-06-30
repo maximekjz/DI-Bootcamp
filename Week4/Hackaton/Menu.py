@@ -36,17 +36,17 @@ def user_orga():
                     ''').upper()
             
             if user_choice == 'V':
-                request_name = input('Which request do you want to see ? Please enter your organization name ')
-                resp_name= input('Please enter your name ')
-                date=input('Please enter the date of your activity(format YYYY-MM-DD) ')
-                tel=input('Please enter your phone number ')
-                request = MenuOrga(request_name, resp_name, date, tel)
-                organization = request.get_by_name()
-                if organization is None:
+                request_name_view_o = input('Which request do you want to see ? Please enter your organization name ')
+                resp_name_view_o= input('Please enter your name ')
+                date_view_o=input('Please enter the date of your activity(format YYYY-MM-DD) ')
+                tel_view_o=input('Please enter your phone number ')
+                request_view_o = MenuOrga(request_name_view_o, resp_name_view_o, date_view_o, tel_view_o)
+                organization_view_o = request_view_o.get_by_name()
+                if organization_view_o is None:
                     print("Organization not found.")
                 else:
-                    print(f"Organization found: {organization.__dict__}")
-                print(request.get_by_name())
+                    print(f"Organization found: {organization_view_o.__dict__}")
+                print(request_view_o.get_by_name())
             elif user_choice == 'A':
                 add_request_to_list()
             elif user_choice == 'D':
@@ -236,15 +236,15 @@ def user_volunteer():
             
             if user_choice == 'V':
                 request_name = input('Which request do you want to see ? Please enter your first name ')
-                last_name= input('Please enter your last name ')
-                date=input('Please enter the date of your activity(format YYYY-MM-DD) ')
-                tel=input('Please enter your phone number ')
-                request = MenuOrgavol(request_name, last_name, date, tel)
-                organization = request.get_by_name_vol()
-                if organization is None:
+                last_name_view= input('Please enter your last name ')
+                date_view=input('Please enter the date of your activity(format YYYY-MM-DD) ')
+                tel_view=input('Please enter your phone number ')
+                request_view = MenuOrgavol(request_name, last_name_view, date_view, tel_view)
+                organization_view = request_view.get_by_name_vol()
+                if organization_view is None:
                     print("Organization not found.")
                 else:
-                    print(f"Organization found: {organization.__dict__}")
+                    print(f"Organization found: {organization_view.__dict__}")
             elif user_choice == 'A':
                 show_requests()
             elif user_choice == 'D':
@@ -563,12 +563,12 @@ class Match:
                 AND (v.location = 'All' OR v.location::text = m.location::text)
                 AND (v.insurance::text = m.insurance::text OR m.insurance = 'Yes' OR v.insurance = 'Yes')
                 AND (v.provide_transport = 'No' OR m.provide_transport = 'Yes')
-                --AND m.remaining_places >= v.num_people_in_group
+                AND m.remaining_places > v.num_people_in_group
                 AND (v.task = 'All' OR m.category = 'For all')
                 AND m.id = %s
                 '''
             cursor.execute(query, (self.id_select,))
-            result=cursor.fetchall()
+            result=cursor.fetchall()    
 
             if result:
                 for row in result:
