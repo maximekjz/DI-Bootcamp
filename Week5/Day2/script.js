@@ -257,7 +257,7 @@ yield
 // let num2 = 6;
 // if (num1 === num2) {
 //   console.log("true");
-// } else if (num1 > num2) {
+// } else !=(num1 > num2) {
 //   console.log("lower");
 // } else {
 //   console.log("default");
