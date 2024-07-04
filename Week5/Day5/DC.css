@@ -1,0 +1,95 @@
+body {
+    background-image: linear-gradient(to bottom, #ff6666, #ffcccc);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.todo {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+h2 {
+    color: white;
+    background-color: #ff6666;
+    padding: 10px;
+    border-radius: 10px 10px 0 0;
+    margin: -20px -20px 20px -20px;
+}
+
+form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+form input[type="text"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+    width: 200px;
+}
+
+form input[type="submit"] {
+    padding: 10px 20px;
+    border: none;
+    background-color: #0099ff;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.listTasks {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    max-width: 200px;
+    margin: 0 auto;
+}
+
+.listTasks ul {
+    background-color: white;
+    margin: 5px 0;
+    padding: 10px;
+    border-bottom: 1px solid lightskyblue;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+/* }
+
+.listTasks ul.completed {
+    text-decoration: line-through;
+    color: red;
+}
+
+.listTasks ul.completed input[type="checkbox"] {
+    text-decoration: line-through;
+} */
+/* 
+.listTasks ul .delete-btn {
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    padding: 5px;
+} */
+
+/* .clear {
+    margin-top: 20px;
+}
+
+.clear a {
+    color: red;
+    cursor: pointer;
+    text-decoration: none; */
+}

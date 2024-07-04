@@ -6,7 +6,7 @@ container_color.forEach(div=>{
     div.addEventListener('click', function (){
         console.log('Selected color:', color);
         mouseover_color.forEach(div_over=>{
-            div_over.addEventListener('mouseover', function(){
+            div_over.addEventListener('click', function(){
                 this.style.backgroundColor = color;
             })
         })
