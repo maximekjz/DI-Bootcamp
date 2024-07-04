@@ -1,0 +1,71 @@
+/* <style>
+        #container {
+          width: 400px;
+          height: 400px;
+          position: relative;
+          background: yellow;
+        }
+        #animate {
+          width: 50px;
+          height: 50px;
+          position: absolute;
+          background-color: red;
+        }
+        </style> */
+    
+.container-colors{
+    display: grid;
+    grid-gap: 5px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+    float: left;
+    background-color: darkgrey;
+    height: 100vh;
+    width: 40vh;
+    padding : 5px;
+}
+
+.container-colors > div {
+    border: 1px solid black; /* Bordure noire autour de chaque div */
+}
+
+.button{
+    grid-column: 1 / span 3;
+    background-color: whitesmoke;
+    color: black;
+    text-align: center;
+    font-size: 100px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    border-radius: 10px; 
+    overflow: hidden;
+
+}
+
+.button button {
+    width: 100%; 
+    height : 100%;
+    border: none; /* Supprime les bordures par défaut du bouton */
+    background-color: transparent; /* Fond transparent pour montrer le fond du conteneur */
+    cursor: pointer; /* Curseur de pointeur pour indiquer que le bouton est cliquable */
+    padding: 20px; /* Ajoute un espace autour du texte du bouton */
+    border-radius: 10px; /* Arrondi des coins */
+    outline: none; /* Supprime l'effet de l'ombre du bouton lorsqu'il est cliqué */
+}
+
+.main{
+    display: grid;
+    grid-template-columns: repeat(60, 1fr);
+    grid-template-rows: repeat(20, 1fr);
+    background-color: darkgrey;
+    height: 100vh;
+    padding: 5px 10px 5px 5px;
+    box-sizing: border-box;
+}
+
+.main > div{
+    border: 1px lightgray solid;
+}
