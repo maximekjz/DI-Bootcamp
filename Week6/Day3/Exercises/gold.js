@@ -54,3 +54,25 @@ const counterTwo = counterOne;
 counterTwo.increment();
 // 3
 console.log(counterOne.count);
+
+// Exercice 4
+
+class Bird {
+    constructor() {
+      console.log("I'm a bird. 🦢");
+    }
+  }
+//   --> "I'm a bird. 🦢"
+  class Flamingo extends Bird {
+    constructor() {
+      console.log("I'm pink. 🌸");
+      super();
+    }
+  }
+  
+//   --> I'm pink. 🌸
+  const pet = new Flamingo();
+
+//   I'm a bird. 🦢 /  I'm pink. 🌸
+
+
