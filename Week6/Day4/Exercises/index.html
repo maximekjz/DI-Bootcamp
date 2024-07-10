@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+<!-- Exerice 1 <!DOCTYPE html> -->
+
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -7,11 +8,22 @@
     <script src="XP.js" defer async></script>
   </head>
   <body>
-    <form id="userForm">
-        <input type = "text" placeholder="Name" name="name">
-        <input type = "text" placeholder="Last Name" name="lastname">
+    <form method ="POST" action = "index.html" id="userForm">
+        <div>
+            <label for="name">Name</label><br>
+            <input type = "text" placeholder="Name" name="name">
+        </div>
+        <p></p>
+        <div>
+            <label for="comment">Comments</label><br>
+            <textarea type = "textarea" placeholder="Comment" name="comment"></textarea>
+        </div>
+        <p></p>
         <button type = "submit" value="Send">Send</button>
     </form> 
     <div id="output" class="output"></div>
   </body>
 </html>
+
+<!-- The information goes to the URL  -->
+<!-- Exercice 2 : it's sent to the body of the HTTP (not in URL) -->
