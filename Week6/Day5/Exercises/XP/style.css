@@ -1,0 +1,96 @@
+body {
+    background-image: url('robot_background.png');
+    background-position: center;
+    background-color: blueviolet;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    flex-direction: column;
+    align-items: center;
+}
+
+nav {
+    background-image: url('gears.png');
+    background-color: rgb(107, 204, 107);
+    height: 60px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    box-sizing: border-box;
+    font-family: 'SEGA LOGO FONT', sans-serif;                                     
+    font-size: 30px;
+    font-weight: 100;
+
+}
+
+.nav-link {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    margin-right: auto
+}
+
+input[type="text"] {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    border: 2px solid rgb(135, 154, 227);
+    margin-left: 20px; 
+}
+
+#robots_section{
+    display: grid;
+    grid-gap: 15px;
+    grid-template-columns: repeat(3, 1fr);
+    margin: auto; 
+    height: 100vh;
+    padding : 5px;
+}
+
+#robots_section > div {
+    border: 1px solid black;
+    background-color: green;
+    background-image: url('card_background.png');
+    background-size: cover; 
+    display: grid;
+    place-items: center; 
+    text-align: center;
+    font-family: 'Brightier', sans-serif;
+    font-size: 30px;   
+    height : 300px;     
+    min-height: 300px;
+    min-width : 253px;
+    align-content: center;
+    text-align: left; 
+
+                       
+}
+
+.robot-image{
+    width: 150px; 
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover; 
+    margin-bottom: 10px;
+    background-color: turquoise;
+}
+
+.robot-name {
+    font-family: 'Brightier', sans-serif;                                          
+    font-size: 30px;
+    font-weight:100; 
+    margin:0;
+    text-align: left;
+}
+
+.robot-mail {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    color: #473636;
+    margin:0;
+    text-align: left;
+}
