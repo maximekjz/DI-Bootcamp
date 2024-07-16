@@ -1,0 +1,12 @@
+body {
+    background-image: url(https://github.com/devtlv/studentsGitHub/blob/master/JS/Week%205/Day%205/Mini%20Projects/Mini-Project%202%20-%20Pokedex%20API/pokedex.png?raw=true);    
+    font-family: 'Helvetica Neue';
+    color: yellow;
+    text-align: center;
+}
+
+
+#logo{
+    align:left;
+    display:block
+}
