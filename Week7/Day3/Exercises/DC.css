@@ -1,0 +1,94 @@
+body {
+    background-image: url(https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.hdwallpapers.in%2Fdownload%2Fcolorful_currencies_hd_money-1366x768.jpg&f=1&nofb=1&ipt=f6b02d4e5695d0638decc1ab738bb70301ad9fcef7a4395e26c419409c49567a&ipo=images);
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: white;
+    text-align: center;
+}
+
+.logo {
+    background: url(https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fdownload.vikidia.org%2Fvikidia%2Ffr%2Fimages%2Fthumb%2F6%2F6c%2FStar_Wars_Logo.svg%2F450px-Star_Wars_Logo.svg.png&f=1&nofb=1&ipt=68e9f372ba76197ce1a3a69bd31ca285fbe63bc8bb4f747b496b0d4a07aad789&ipo=images) center center no-repeat;
+    width: 400px;
+    height: 300px;
+    margin: 0 auto;
+    margin-top: -20px;
+}
+
+div {
+    display: block;
+    /* unicode-bidi: isolate; */
+}
+
+.info{
+    border: 3px solid yellow;
+    border-radius: 15px;
+    width: 600px;
+    height: 250px;
+    margin: 0 auto;
+    margin-top: -25px;
+    color:white
+}
+
+#button {
+    margin-top: 20px;
+    border: 2px solid purple;
+    border-radius: 10px;
+    width: 100px;
+    height: 30px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+#result {
+    margin-top: 20px;
+    border: 3px solid purple;
+    border-radius: 10px;
+    width: 600px;
+    height: 60px;
+    margin: 0 auto;
+    margin-top: 20px;
+    font-weight: bold;
+    font-size: 20px;
+    cursor: pointer;
+    font-size: 50px;
+    text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-style: italic;
+    color : purple;
+    background-color: white;
+}
+
+h1{
+    font-size: 70px;
+    text-shadow: 
+    -2px -2px 0 purple,
+     2px -2px 0 purple,
+    -2px  2px 0 purple,
+     2px  2px 0 purple;
+     margin-top: 20px;
+}
+
+h3{
+    font-size: 30px;
+    text-shadow: 
+    -1px -1px 0 purple,
+     1px -1px 0 purple,
+    -1px  1px 0 purple,
+     1px  1px 0 purple;
+     margin-top: 10px;
+     margin-bottom: 10px;
+}
+
+select{
+    height: 30px;
+    color: red
+}
+
+#amount{
+    height: 20px;
+    text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+img{
+    height: 100px;
+}
