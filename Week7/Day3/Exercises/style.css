@@ -1,0 +1,47 @@
+body {
+    background-image: url(https://i.giphy.com/media/TxVVB6PfWMjE4/200.webp);
+    font-family: 'Helvetica Neue';
+    color: yellow;
+    text-align: center;
+}
+
+.logo {
+    background: url(https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fdownload.vikidia.org%2Fvikidia%2Ffr%2Fimages%2Fthumb%2F6%2F6c%2FStar_Wars_Logo.svg%2F450px-Star_Wars_Logo.svg.png&f=1&nofb=1&ipt=68e9f372ba76197ce1a3a69bd31ca285fbe63bc8bb4f747b496b0d4a07aad789&ipo=images) center center no-repeat;
+    width: 400px;
+    height: 300px;
+    margin: 0 auto;
+    margin-top: -20px;
+}
+
+div {
+    display: block;
+    /* unicode-bidi: isolate; */
+}
+
+.info{
+    border: 3px solid yellow;
+    border-radius: 15px;
+    width: 600px;
+    height: 250px;
+    margin: 0 auto;
+    margin-top: -25px;
+    color:white
+}
+
+#button {
+    margin-top: 20px;
+    border: 3px solid yellow;
+    border-radius: 10px;
+    width: 180px;
+    height: 40px;
+    font-weight: bold;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.loader {
+    display: none;
+    color: yellow; 
+    font-size: 24px; 
+    margin-top: 20px; 
+}
