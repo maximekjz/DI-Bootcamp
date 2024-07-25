@@ -1,40 +1,48 @@
-document.getElementById('button').addEventListener('click',async function(event){
-    event.preventDefault(); 
+document.addEventListener('DOMContentLoaded', () => {
+    const addForm = document.getElementById('addForm');
+    const errorMessage = document.getElementById('error-message');
 
-    const formData= { 
-        first_name : document.getElementById('f_name').value,
-        last_name : document.getElementById('l_name').value,
-        email : document.getElementById('email').value,
-        username : document.getElementById('username').value,
-        password : document.getElementById('password').value  
-    }
-    if(formData.first_name === '' || formData.last_name === '' || formData.email === '' || formData.username === '' || formData.password === '') {
-        alert('Please populate all the fields');
-    }
-    else{
+    addForm.addEventListener('submit', async function(event) {
+        event.preventDefault(); 
+
+        const sport = document.getElementById('sport').value;
+        const city = document.getElementById('city').value;
+        const address = document.getElementById('address').value;
+        const groundName = document.getElementById('groundName').value;
+        const imageInput = document.getElementById('image');
+        
+        if (!sport || !city || !address || !groundName || !imageInput.files[0]) {
+            alert('Please populate all the fields');
+            return;
+        }
+
+        const imageFile = imageInput.files[0];
+        const formData = new FormData();
+        formData.append('sport', sport);
+        formData.append('city', city);
+        formData.append('address', address);
+        formData.append('groundName', groundName);
+        formData.append('image', imageFile);
+
         try {
-            const response = await fetch('http://localhost:5001/user/register', {
+            const response = await fetch('http://localhost:5001/api/grounds', {
                 method: 'POST',
-                headers: {
-                'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(formData),
+                body: formData,
             });
-            
+
             const result = await response.json();
 
             if (response.ok) {
-                console.log('User registered successfully');
+                console.log('Playground added successfully');
                 alert(result.message);
                 window.location.href = '/index.html';  
-
             } else {
                 console.error('Error registering user:', result.message);
-                document.getElementById('error-message').textContent = result.message;
+                errorMessage.textContent = result.message;
             }
         } catch (error) {
-          console.error('Error:', error);
+            console.error('Error:', error);
+            errorMessage.textContent = error.message;
         }
-    }
-})
-
+    });
+});

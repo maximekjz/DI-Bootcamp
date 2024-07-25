@@ -1,4 +1,4 @@
-console.log('DOMContentLoaded  fired');
+let grounds = []    
 
 document.addEventListener('DOMContentLoaded', () => {
     console.log('DOMContentLoaded event fired');
@@ -7,7 +7,6 @@ document.addEventListener('DOMContentLoaded', () => {
         console.error('Element with ID "userForm" not found');
         return;
     }
-
     
     userForm.addEventListener('input', function(event) {
         event.preventDefault();
@@ -15,6 +14,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const resLength = research.length;
         console.log(research);
         console.log(resLength);
+        console.log('Grounds:', grounds);
+
         let filteredGrounds;
         if (resLength > 0) {
             filteredGrounds = grounds.filter(ground => {
@@ -39,8 +40,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 throw new Error(`HTTP error! Status: ${response.status}`);
             }
             
-            const grounds = await response.json();
+            const data = await response.json();
             console.log('Fetched Grounds:', grounds); 
+            grounds = data
             create_ground(grounds);
         } catch (error) {
             console.error('Error fetching grounds:', error);
@@ -51,42 +53,48 @@ document.addEventListener('DOMContentLoaded', () => {
     function create_ground(grounds) {
         const container = document.getElementById('grounds-container');
         container.innerHTML = ''; 
-
+    
         grounds.forEach((ground) => {
+            console.log('Ground Object:', ground);
+            console.log('Ground image:', ground.image);
             const newDiv = document.createElement('div');
             newDiv.classList.add(`ground-id-${ground.id}`);
             newDiv.id = `ground_card`;
-
+    
             const newImage = document.createElement('img');
-            newImage.src = ground.image || '/path/to/default/image.jpg';
-            newImage.alt = `ground ${ground.id}`;
+            if (ground.image && typeof ground.image === 'string') {
+                newImage.src = ground.image;
+            } else {
+                newImage.src = '/images/default-image.jpg'; 
+            }
+            newImage.alt = `Ground ${ground.id}`;
             newImage.classList.add('ground-image');
             newDiv.appendChild(newImage);
-
+    
             const newName = document.createElement('p');
             newName.textContent = ground.groundname || 'No name available';
             newName.classList.add('ground-name');
             newDiv.appendChild(newName);
-
+    
             const newSport = document.createElement('p');
             newSport.textContent = ground.sport || 'No sport available';
             newSport.classList.add('ground-sport');
             newDiv.appendChild(newSport);
-
+    
             const newCity = document.createElement('p');
             newCity.textContent = ground.city || 'No city available';
             newCity.classList.add('ground-city');
             newDiv.appendChild(newCity);
-
+    
             const newAddress = document.createElement('p');
-            newAddress.textContent = ground.address || 'No address available'
+            newAddress.textContent = ground.address || 'No address available';
             newAddress.classList.add('ground-address');
             newDiv.appendChild(newAddress);
-
+    
             container.appendChild(newDiv);
         });
     }
-
+    
     displayAllGrounds();
 });
 

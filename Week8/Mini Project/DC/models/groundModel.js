@@ -3,7 +3,7 @@ const { db } = require("../config/db.js");
 module.exports = {
 
     createground: async (groundinfo) => {
-        const { groundname, city, address, sport } = groundinfo;
+        const { groundname, city, address, sport, image } = groundinfo;
     
         const trx = await db.transaction();
     
