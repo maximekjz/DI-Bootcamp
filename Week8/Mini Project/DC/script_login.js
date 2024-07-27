@@ -19,11 +19,14 @@ document.getElementById('button').addEventListener('click',async function(event)
             });
             
             const result = await response.json();
+            console.log('API response:', result);
 
             if (response.ok) {
                 console.log('User loged in successfully');
+                localStorage.setItem('userid', result.user.id);
+                console.log(localStorage.getItem('userid'));
                 alert(result.message);
-                window.location.href = '/index.html';  
+                window.location.href = '/public/index.html';  
             } else {
                 console.error('Error loged in user:', result.message);
                 document.getElementById('error-message').textContent = result.message;

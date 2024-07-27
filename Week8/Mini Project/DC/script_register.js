@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (response.ok) {
                 console.log('Playground added successfully');
                 alert(result.message);
-                window.location.href = '/index.html';  
+                window.location.href = '/public/index.html';  
             } else {
                 console.error('Error registering user:', result.message);
                 errorMessage.textContent = result.message;

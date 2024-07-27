@@ -1,0 +1,19 @@
+
+
+
+
+.like-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+    color: #ccc;
+}
+
+.like-button.liked {
+    color: red;
+}
+
+.like-button i {
+    transition: color 0.3s;
+}

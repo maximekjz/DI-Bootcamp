@@ -25,6 +25,7 @@ const express = require("express");
 const userRouter = require("./routes/userRouter.js");
 const multer = require("multer");  // uploading file 
 const groundRouter = require("./routes/groundRouter.js");
+const likeRouter = require('./routes/likeRouter.js');
 const app = express();
 const cors = require('cors');
 
@@ -37,7 +38,9 @@ app.use(express.json());
 app.use("/user", userRouter);
 app.use("/api", groundRouter); 
 
-app.use(express.static("public")); 
+app.use("/api", likeRouter);
+
+app.use(express.static('public'));
 
 const PORT = process.env.PORT || 5001;
 app.listen(PORT, () => {

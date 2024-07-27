@@ -42,7 +42,7 @@ module.exports = {
 
       res.json({
         message: "Login succesfull",
-        user: { userid: user.id, username: user.username },
+        user: { id: user.id, username: user.username },
       });
     } catch (error) {
       console.log(error);

@@ -19,7 +19,7 @@ document.getElementById('add-ground-form').addEventListener('submit', async func
         if (response.ok) {
             console.log('Playground added successfully');
             alert(result.message);
-            window.location.href = '/index.html';  
+            window.location.href = 'index.html';  
         } else {
             console.error('Error adding ground:', result.message);
             document.getElementById('error-message').textContent = result.message;
