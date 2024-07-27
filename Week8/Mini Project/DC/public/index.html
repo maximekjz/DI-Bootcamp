@@ -10,15 +10,31 @@
 
 </head>
 <body>
-    <input type="text" placeholder="Search playgrounds" id="userForm" method="GET" action="index.html">
-    <h1>Playgrounds</h1>
-    <div id="grounds-container"></div>
-    <div id="playground">
-        <h1>My playgrounds</h1>
-    <div id="my-grounds-container"></div>
-    </div>
-    <div id="news">
-        <h1>Last announcements</h1>
-    </div>
+    <header>
+        <nav>
+            <div class="left-nav">
+                <a href="/public/index.html">Home</a>
+                <a href="/public/my_playgrounds.html">My playgrounds</a>
+                <a href="/public/add_ground.html">Add a playground</a>
+            </div>
+            <input type="text" placeholder="Search playgrounds" id="userForm">
+            <a href="/public/login.html" class="logout">Log out</a>
+        </nav>
+    </header>
+    <main>
+        <h1>Playgrounds</h1>
+        <div id="grounds-container"></div>
+        <div id="playground">
+            <h1>My playgrounds</h1>
+        <div id="my-grounds-container"></div>
+        </div>
+        <div id="news">
+            <h1>Last announcements</h1>
+        </div>
+    </main>
+    <footer>
+        copyright 2024 Students of TTA 17
+        <!-- add header -->
+    </footer>
 </body>
 </html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= ground.groundname %></title>
+</head>
+<body>
+  <h1><%= ground.groundname %></h1>
+  <% if (ground.image) { %>
+    <img src="data:image/jpeg;base64,<%= Buffer.from(ground.image, 'hex').toString('base64') %>" alt="<%= ground.groundname %>">
+  <% } else { %>
+    <p>No image available.</p>
+  <% } %>
+  <p>Sport: <%= ground.sport %></p>
+  <p>City: <%= ground.city %></p>
+  <p>Address: <%= ground.address %></p>
+</body>
+</html>

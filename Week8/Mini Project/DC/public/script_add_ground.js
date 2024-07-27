@@ -18,8 +18,7 @@ document.getElementById('add-ground-form').addEventListener('submit', async func
 
         if (response.ok) {
             console.log('Playground added successfully');
-            alert(result.message);
-            window.location.href = 'index.html';  
+            alert(result.message); 
         } else {
             console.error('Error adding ground:', result.message);
             document.getElementById('error-message').textContent = result.message;
@@ -27,4 +26,14 @@ document.getElementById('add-ground-form').addEventListener('submit', async func
     } catch (error) {
         console.error('Error:', error);
     }
+});
+
+document.getElementById('logoutLink').addEventListener('click', function(event) {
+    event.preventDefault(); 
+    fetch('/logout', { method: 'GET' })
+      .then(() => {
+        localStorage.removeItem('token'); 
+        window.location.href = '/login';
+      })
+      .catch(error => console.error('Erreur lors de la déconnexion:', error));
 });

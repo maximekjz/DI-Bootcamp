@@ -1,5 +1,67 @@
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    background-color: #f8f9fa; 
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin : 0;
+
+}
+
+.left-nav {
+    display: flex;
+    gap: 15px; 
+}
+
+nav {
+    display: flex;
+    align-items: center; 
+    justify-content: space-between;
+    background-color: #f8f9fa;
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+nav a {
+    text-decoration: none;
+    color: #000; 
+    margin: 0 15px; 
+}
+
+nav a:hover {
+    color: #007bff; 
+}
+
+#userForm {
+    flex: 0 1 600px; /* Occuper l'espace nécessaire avec une largeur minimale de 200px */
+    max-width: 800px;
+    margin: 0 20px;
+    padding: 5px;
+    border: 1px solid #ccc; /* Bordure de la barre de recherche */
+    border-radius: 5px; /* Coins arrondis */
+    text-align: center;
+     /* Centrer le texte dans la barre de recherche */
+}
+
+/* Alignement des éléments */
+nav > a:first-child {
+    margin-right: auto; /* Pousser les éléments suivants vers la droite */
+}
+
+nav a:last-child {
+    margin-left: auto;
+}
 
 
+main {
+    padding-left: 20px;
+    padding-right: 20px;
+}
 
 
 .like-button {
@@ -16,4 +78,59 @@
 
 .like-button i {
     transition: color 0.3s;
+}
+
+#grounds-container, #my-grounds-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    padding: 16px;
+    background-color: #f5f5f5;
+}
+
+/* Style pour les cartes de terrain */
+#ground_card, #my-ground_card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 250px;
+    background-color: #fff;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Style pour l'image du terrain */
+.ground-image {
+    width: 100%;
+    height: auto;
+    border-bottom: 1px solid #ccc;
+}
+
+/* Style pour les informations du terrain */
+.ground-name, .ground-sport, .ground-city, .ground-address {
+    margin: 8px 0;
+    padding: 0 8px;
+    font-size: 0.9em;
+}
+
+/* Style spécifique pour le nom du terrain */
+.ground-name {
+    font-weight: bold;
+}
+
+#more-button {
+    display: block !important;
+    margin: 10px;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#more-button:hover {
+    background-color: #0056b3;
 }

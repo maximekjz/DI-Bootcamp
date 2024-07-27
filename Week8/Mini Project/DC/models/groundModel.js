@@ -1,47 +1,57 @@
 const { db } = require("../config/db.js");
 
 module.exports = {
+  createGround: async (groundInfo) => {
+    const { groundname, city, address, sport, image } = groundInfo;
+    const url = groundname.toLowerCase().replace(/\s+/g, '-');
 
-    createground: async (groundinfo) => {
-        const { groundname, city, address, sport, image } = groundinfo;
-    
-        const trx = await db.transaction();
-    
-        try {
-          // insert ground data into 'grounds' table
-          const [ground] = await trx("playground").insert(
-            { groundname, city, address, sport, image},
-            ["groundname", "id"]
-          );
-    
-          await trx.commit();
-    
-          return ground;
-        } catch (error) {
-          await trx.rollback();
-          throw error;
-        }
-      },
+    const trx = await db.transaction();
+
+    try {
+      const [ground] = await trx("playground").insert(
+        { groundname, city, address, sport, image, url },
+        ["groundname", "id", "url"]
+      );
+
+      await trx.commit();
+
+      return ground;
+    } catch (error) {
+      await trx.rollback();
+      throw error;
+    }
+  },
 
   getAllGrounds: async () => {
     try {
-      const Grounds = await db("playground").select("*");
-      return Grounds;
+      const grounds = await db("playground").select("*");
+      return grounds;
     } catch (error) {
       throw error;
     }
   },
 
   getGroundById: async (id) => {
-    try{
-        const Ground = await db("playground")
-        .select("playground.id", "playground.groundname")
-        .where("playground.id", id)
+    try {
+      const ground = await db("playground")
+        .select("id", "groundname")
+        .where("id", id)
         .first();
-        return Ground
+      return ground;
     } catch (error) {
-        throw error
+      throw error;
     }
   },
 
+  getGroundByUrl: async (url) => {
+    try {
+      const ground = await db("playground")
+        .select("*")
+        .where("url", url)
+        .first();
+      return ground;
+    } catch (error) {
+      throw error;
+    }
+  }
 };

@@ -28,8 +28,18 @@ const groundRouter = require("./routes/groundRouter.js");
 const likeRouter = require('./routes/likeRouter.js');
 const app = express();
 const cors = require('cors');
+const ejs = require("ejs");
+const path = require('path');
+
 
 app.use(cors());
+app.set("view engine", "ejs");
+app.set('views', path.join(__dirname, 'public/views'));
+app.get('/', (req, res) => {
+  res.render('index'); 
+});
+app.use(express.static(path.join(__dirname, 'public')));
+
 
 // body parser
 app.use(express.urlencoded({ extended: true }));
@@ -37,10 +47,21 @@ app.use(express.json());
 
 app.use("/user", userRouter);
 app.use("/api", groundRouter); 
-
+app.use('/grounds', groundRouter);
 app.use("/api", likeRouter);
 
 app.use(express.static('public'));
+
+app.get('/logout', (req, res) => {
+  req.session.destroy((err) => {
+    if (err) {
+      return res.redirect('/dashboard');
+    }
+
+    res.clearCookie('connect.sid'); 
+    res.redirect('/login');
+  });
+});Ò
 
 const PORT = process.env.PORT || 5001;
 app.listen(PORT, () => {
