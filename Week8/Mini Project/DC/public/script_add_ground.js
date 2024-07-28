@@ -6,7 +6,7 @@ document.getElementById('add-ground-form').addEventListener('submit', async func
     formData.append('city', document.getElementById('city').value);
     formData.append('address', document.getElementById('address').value);
     formData.append('groundName', document.getElementById('groundName').value);
-    formData.append('image', document.getElementById('image').files[0]);
+    formData.append('image', document.getElementById('image').value);
 
     try {
         const response = await fetch('http://localhost:5001/api/grounds', {

@@ -33,8 +33,7 @@ module.exports = {
 
   createGround: async (req, res) => {
     try {
-      const { sport, city, address, groundName } = req.body;
-      const image = req.file ? req.file.buffer : null;
+      const { sport, city, address, groundName, image } = req.body;
       const groundPageUrl = groundName.toLowerCase().replace(/\s+/g, '-');
 
       const newGround = await groundModel.createGround({

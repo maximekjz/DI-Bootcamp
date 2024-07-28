@@ -61,7 +61,7 @@ app.get('/logout', (req, res) => {
     res.clearCookie('connect.sid'); 
     res.redirect('/login');
   });
-});Ò
+});
 
 const PORT = process.env.PORT || 5001;
 app.listen(PORT, () => {

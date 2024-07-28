@@ -1,0 +1,4 @@
+Pour le logout : mettre id = 0
+Mettre valeur par defaut image dans JS et pas html 
+Pour créer URL par carte, utiliser fetch json 
+Dans la liste des playgrounds, voir en rouge ce que j'aime deja 

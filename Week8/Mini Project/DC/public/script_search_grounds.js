@@ -19,20 +19,9 @@ function create_ground(grounds) {
         imageLink.classList.add('ground-link');
         console.log({'URL':  ground.url});
 
-
+        // need to add the default value here and not in the HTML 
         const newImage = document.createElement('img');
-        if (ground.image && typeof ground.image === 'string') {
-            try {
-                const buffer = Buffer.from(ground.image, 'hex'); 
-                const base64Image = buffer.toString('base64');
-                newImage.src = `data:image/jpeg;base64,${base64Image}`;
-            } catch (error) {
-                console.error('Error converting image:', error);
-                newImage.src = '/images/default-image.jpg'; 
-            }
-        } else {
-            newImage.src = '/images/default-image.jpg'; 
-        }
+        newImage.src = ground.image; 
         newImage.alt = `Ground ${ground.id}`;
         newImage.classList.add('ground-image');
         imageLink.appendChild(newImage);
@@ -199,19 +188,9 @@ function updateMyGroundsContainer(likedGrounds) {
         newDiv.classList.add(`ground-id-${ground.id}`);
         newDiv.id = 'my-ground_card';
 
+        // need to add the default value here and not in the HTML
         const newImage = document.createElement('img');
-        if (ground.image && typeof ground.image === 'string') {
-            try {
-                const buffer = Buffer.from(ground.image, 'hex'); 
-                const base64Image = buffer.toString('base64');
-                newImage.src = `data:image/jpeg;base64,${base64Image}`;
-            } catch (error) {
-                console.error('Error converting image:', error);
-                newImage.src = '/images/default-image.jpg'; 
-            }
-        } else {
-            newImage.src = '/images/default-image.jpg'; 
-        }
+        newImage.src = ground.image; 
         newImage.alt = `Ground ${ground.id}`;
         newImage.classList.add('ground-image');
         newDiv.appendChild(newImage);
