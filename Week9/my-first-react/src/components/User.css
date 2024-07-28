@@ -1,0 +1,7 @@
+.usrs{
+    display: inline-block;
+    border : 1 px solid #000;
+    padding:'20px';
+    text-align:'center';
+    background-color:'lightengreen';
+}
