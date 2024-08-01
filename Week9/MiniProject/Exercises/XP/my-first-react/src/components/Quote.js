@@ -75,7 +75,7 @@ const Quote = () => {
     useEffect(()=>{
     updateQuote()
     document.body.style.backgroundColor = colorBack;
-}, [])
+}, [colorBack])
 
 
 return (
