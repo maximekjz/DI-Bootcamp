@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { addTask, removeTask, toggleTask } from './manageSlice';
+import { addTask, editTask, removeTask, toggleTask } from './manageSlice';
 import { useRef, useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -9,7 +9,9 @@ const Manage = () => {
   const dispatch = useDispatch();
   
   const taskRef = useRef();
+  const taskEditRef = useRef();
   const idRemoveRef = useRef();
+  const idEditRef = useRef();
   const idToggleRef = useRef();
   const [selectedDate, setSelectedDate] = useState(null);
   const [filterDate, setFilterDate] = useState(null);
@@ -51,7 +53,28 @@ const Manage = () => {
       </div>
       <div>
         <h2>Modify your list: </h2><br/>
-        <input placeholder="id to remove" ref={idRemoveRef} />
+        <input placeholder="id to edit" ref={idEditRef} />
+        <input placeholder="text to edit" ref={taskEditRef} />
+        <button
+          onClick={() => {
+            const task = taskEditRef.current?.value;
+            const id = Number(idEditRef.current?.value);
+            if (!isNaN(id) && task) {
+              console.log('editing task with id:', id); 
+              dispatch(editTask({
+                id:id, 
+                task:task}));
+              idEditRef.current.value = ''; 
+              taskEditRef.current.value = ''; 
+            }
+          }}
+        >
+          Edit Task
+        </button>
+        <br />
+      </div>
+      <div>
+      <input placeholder="id to remove" ref={idRemoveRef} />
         <button
           onClick={() => {
             const id = Number(idRemoveRef.current?.value);

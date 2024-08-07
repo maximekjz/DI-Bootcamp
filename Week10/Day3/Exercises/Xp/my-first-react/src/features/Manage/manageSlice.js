@@ -31,9 +31,16 @@ export const tasksSlice = createSlice({
         task.completed = !task.completed;
       }
     },
+    editTask: (state, action) => {
+      const {id, task} = action.payload
+      const existingTask = state.tasks.find((task) => task.id === id);
+      if (existingTask) {
+        existingTask.task = task
+      }    
+    },
   },
 });
 
-export const { addTask, toggleTask, removeTask } = tasksSlice.actions;
+export const { addTask, toggleTask, removeTask, editTask } = tasksSlice.actions;
 
 export default tasksSlice.reducer;
