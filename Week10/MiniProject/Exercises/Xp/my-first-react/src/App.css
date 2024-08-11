@@ -1,0 +1,36 @@
+.custom-select {
+  width: 200px;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #fff;
+  cursor: pointer;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.custom-select:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.25);
+  outline: none;
+}
+
+.custom-select option {
+  padding: 10px;
+}
+
+article {
+  margin-bottom: 15px;
+}
+
+article h3 {
+  margin: 0;
+  font-size: 18px;
+  color: #333;
+}
+
+article h5 {
+  margin: 0;
+  font-size: 14px;
+  color: #777;
+}
