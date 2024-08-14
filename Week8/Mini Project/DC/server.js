@@ -35,12 +35,15 @@ const path = require('path');
 app.use(cors());
 app.set("view engine", "ejs");
 app.set('views', path.join(__dirname, 'public/views'));
+app.use(express.static(path.join(__dirname, 'public')));
+
 app.get('/', (req, res) => {
   res.render('index'); 
 });
-app.use(express.static(path.join(__dirname, 'public')));
 
-
+app.get('/script_login.js', (req, res) => {
+  res.sendFile(path.join(__dirname, 'script_login.js'));
+});
 // body parser
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -49,8 +52,6 @@ app.use("/user", userRouter);
 app.use("/api", groundRouter); 
 app.use('/grounds', groundRouter);
 app.use("/api", likeRouter);
-
-app.use(express.static('public'));
 
 app.get('/logout', (req, res) => {
   req.session.destroy((err) => {

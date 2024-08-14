@@ -45,6 +45,7 @@ nav a:hover {
     border: 1px solid #ccc; /* Bordure de la barre de recherche */
     border-radius: 5px; /* Coins arrondis */
     text-align: center;
+    margin-right: auto
      /* Centrer le texte dans la barre de recherche */
 }
 
@@ -57,6 +58,13 @@ nav a:last-child {
     margin-left: auto;
 }
 
+.logout:first-of-type {
+    margin-left: 30px; /* Ajustez cette valeur pour déplacer "Log in" plus à droite */
+}
+
+.logout:last-of-type {
+    margin-left: 10px; /* Ajustez cette valeur pour l'espacement entre "Log in" et "Register" */
+}
 
 main {
     padding-left: 20px;

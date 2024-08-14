@@ -26,7 +26,7 @@ document.getElementById('button').addEventListener('click',async function(event)
                 localStorage.setItem('userid', result.user.id);
                 console.log(localStorage.getItem('userid'));
                 alert(result.message);
-                window.location.href = '/public/index.html';  
+                window.location.href = '/index.html';  
             } else {
                 console.error('Error loged in user:', result.message);
                 document.getElementById('error-message').textContent = result.message;
