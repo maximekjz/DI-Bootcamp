@@ -1,163 +1,223 @@
-@import url('https://fonts.googleapis.com/css?family=Raleway');
-
-body{
-    margin-top:0px;
-    margin-bottom: 0px;
-    font-family: "Raleway";
-    background: linear-gradient(to bottom, #e0e0e067, #ffffff);
+html, body {
+    height: 100%; /* S'assure que le corps prend toute la hauteur de la page */
+    margin: 0; /* Supprime les marges par défaut */
 }
+
+
+.content {
+    flex: 1; /* Prend tout l'espace disponible */
+}
+
+body {
+    font-family: "Raleway", sans-serif;
+    margin: 0;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
 
 .banner-container {
-    padding-top: 0px; 
-    /* background: linear-gradient(to bottom, #e0e0e097, #ffffff); */
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    color: black; /* Optionnel : ajuste la couleur du texte pour être visible sur l'image de fond */
-    text-align: center; /* Optionnel : centre le texte horizontalement */
-    padding: 100px 20px; /* Ajustez les valeurs de padding selon vos besoins */
+    padding: 60px 0; /* Ajuste le padding pour avoir moins d'espace en haut et en bas */
+    width: 100vw; /* Assure que la largeur est de 100% de la vue */
+    height: auto; /* Ajuste la hauteur automatiquement en fonction du contenu */
+    background-color: #e0e0e0; /* Ajoute une couleur de fond pour vérifier la largeur */
+    box-sizing: border-box; /* Inclut le padding et la bordure dans la largeur totale */
     display: flex;
     justify-content: center;
-    height:500px;
+    align-items: center;
 }
 
-header{
+
+header {
     position: fixed;
-    width:100%;
-    top:0;
+    width: 100%;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    z-index: 1000;
+    margin: 0;
 }
 
-nav{
-    display:flex;
-    flex-direction: row;
+nav {
+    display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    height:80px;
-    width: auto;
-    margin-top: 0px; 
-    background-color: rgb(203, 201, 201);
-    z-index: 1000;
+    padding: 10px 20px;
+    width: 100%; 
+    box-sizing: border-box;
 }
 
-ul{
-   list-style-type: none; 
-}
-
-li{
-    display:inline;
-    padding:5px;
-}
-
-.nav-left ul{
+.nav-left ul, .nav-right ul {
+    list-style-type: none;
     display: flex;
     align-items: center;
-    margin: 0px;
-    padding: 0px;
-    margin-left: 10px;
+    margin: 0;
+    color:white
 }
 
 .nav-left img{
-    height: 60px;
     width:60px;
-    border-radius: 50%;
+    height:60px;
+    border-radius:50%;
+    
 }
 
-.nav-right{
-    margin-right: 50px;
-}
-
-.below-nav{
-    padding-top:100px;
-    width:400px;
-    line-height: 40px;
-}
-
-a{
+.nav-right a {
+    margin-left: 20px;
+    color: white;
     text-decoration: none;
-    color: inherit;
 }
 
-#About, #Project, #Contact{
-    padding-top: 80px;
-    display: flex;
-    justify-content: center;
+.network a {
+    margin: 0 10px;
+    transition: transform 0.3s;
 }
 
-.title{
-    display: flex;
-    justify-content: center;
-    font-size:30px;
-    padding-bottom: 10px;
-    border-bottom: 4px solid purple;
-    border-radius: 10px 10px 0 0; /* Coins inférieurs arrondis */
+.network a:hover {
+    transform: scale(1.1);
 }
 
-.border-bottom{
-    width:50px;
+section {
+    padding: 80px 20px;
 }
 
-p{
-    text-align: justify;
-    line-height: 30px;
-    margin-left: 30px;
-    margin-right: 30px;
+.about {
+    padding: 40px 20px;
+    text-align: center;
 }
 
-.skills{
-    display: flex;
-    justify-content: space-evenly;
-
-}
-.skills li{
-    color:white;
-    border-color: white;
-    background-color: purple;
-    border-radius: 10%;
-    padding: 20px;
-}
-
-#cont{
-    color:white;
-    border-color: white;
-    background-color: purple;
-    border-radius: 10%;
-    padding: 30px;
-    justify-content: center;
-}
-
-.cont{
+.about-content {
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 20px;
 }
 
-.Contact{
+.about-img {
+    width: 150px; /* Ajuste la taille de l'image selon tes préférences */
+    height: 150px;
+    border-radius: 50%; /* Rend l'image ronde */
+    object-fit: cover; /* Assure que l'image couvre le conteneur sans déformation */
+}
+
+.about-text {
+    width: 60%; /* Limite la largeur à 80% */
+    text-align: justify; /* Justifie le texte */
+    margin: 0 auto; /* Centre horizontalement */
+}
+
+.about-text p {
+    text-align: justify; /* Justifie le texte à l'intérieur du paragraphe */
+}
+
+.skills {
+    list-style: none; /* Supprime les points de liste */
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px; /* Espace entre les éléments */
+    justify-content: center;
+}
+
+.skills li {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Espace entre l'image et le texte */
+    font-size: 18px; /* Ajuste la taille du texte */
+}
+
+.skills img {
+    width: 30px; /* Ajuste la taille des images des icônes */
+    height: 30px;
+}
+
+
+
+.project-list {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    gap: 20px;
 }
 
-form{
-    font-family: "Raleway";
+.project-item {
     background-color: white;
-    padding:50px
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
-input{
-    width:500px;
-    height:40px;
-    background-color: lightgray;
-    color:gray;
-    border-color: gray;
-    border-radius: 30px 30px 30px 30px;
+.project-item a {
+    color: #6a1b9a;
+    text-decoration: none;
 }
 
-label{
-    font-family: "Raleway";
+.contact form {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    max-width: 600px;
+    margin: 0 auto;
 }
 
-input [type="submit" i]{
-    width:100px;
-    height:50px;
+form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+form input, form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+form input[type="submit"] {
+    background-color: #6a1b9a;
+    color: white;
+    border: none;
+    padding: 15px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+form input[type="submit"]:hover {
+    background-color: #4a0072;
+}
+
+footer {
+    background-color: #6a1b9a;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 0;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer-content p {
+    margin: 0;
+    font-size: 14px;
+}
+
+.footer-content .network {
+    margin-top: 10px;
+}
+
+.footer-content .network a {
+    margin: 0 10px;
+}
+
+
+#shadow-host-companion {
+    display: none !important;
+}
+#home, #about {
+    scroll-margin-top: 70px;
 }
